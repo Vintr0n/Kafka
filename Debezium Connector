@@ -1,0 +1,26 @@
+{
+  "transforms.createkey.type": "org.apache.kafka.connect.transforms.ValueToKey",
+  "transforms.createkey.fields": "id",
+  "key.converter.schemas.enable": "true",
+  "value.converter.schemas.enable": "false",
+  "name": "KafkaTest",
+  "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
+  "tasks.max": "1",
+  "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+  "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+  "transforms": "unwrap",
+  "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+  "transforms.unwrap.spec": [
+    "string"
+  ],
+  "database.server.name": "servername",
+  "database.dbname": "KafkaTest",
+  "database.hostname": "serverhere",
+  "database.port": "1433",
+  "database.user": "userhere",
+  "database.password": "passwordhere",
+  "database.history.kafka.bootstrap.servers": "localhost:9092",
+  "database.history.kafka.topic": "KafkaTest",
+  "table.whitelist": "dbo.table1,dbo.table2",
+  "include.schema.changes": "false"
+}
