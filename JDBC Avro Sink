@@ -1,0 +1,10 @@
+{
+	"name": "ThisSink",
+	"connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+	"tasks.max": "1",
+	"topics": "Severname.dbo.Users",
+	"connection.url": "jdbc:sqlserver://192.168.0.1:1433;databaseName=Test;user=DBUser;password=Password123;",
+	"connection.user": "DBUser",
+	"connection.password": "Password123",
+	"auto.create": "true"
+}
