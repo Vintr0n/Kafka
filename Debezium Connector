@@ -1,26 +1,28 @@
 {
-  "transforms.createkey.type": "org.apache.kafka.connect.transforms.ValueToKey",
-  "transforms.createkey.fields": "id",
-  "key.converter.schemas.enable": "true",
-  "value.converter.schemas.enable": "false",
-  "name": "KafkaTest",
-  "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
-  "tasks.max": "1",
-  "key.converter": "org.apache.kafka.connect.json.JsonConverter",
-  "value.converter": "org.apache.kafka.connect.json.JsonConverter",
-  "transforms": "unwrap",
-  "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
-  "transforms.unwrap.spec": [
-    "string"
-  ],
-  "database.server.name": "servername",
-  "database.dbname": "KafkaTest",
-  "database.hostname": "serverhere",
-  "database.port": "1433",
-  "database.user": "userhere",
-  "database.password": "passwordhere",
-  "database.history.kafka.bootstrap.servers": "localhost:9092",
-  "database.history.kafka.topic": "KafkaTest",
-  "table.whitelist": "dbo.table1,dbo.table2",
-  "include.schema.changes": "false"
+  "name": "SQLCONNECTOR",
+  "config": {
+    "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
+    "tasks.max": "1",
+    "transforms": "unwrap",
+    "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+    "transforms.unwrap.delete.handling.mode": "rewrite",
+    "transforms.unwrap.drop.tombstones": "true",
+    "database.server.name": "serverhere",
+    "database.dbname": "dbname",
+    "database.hostname": "192.168.0.1",
+    "database.port": "1433",
+    "database.user": "DBUser",
+    "database.password": "Password123",
+    "database.history.kafka.bootstrap.servers": "localhost:9092",
+    "database.history.kafka.topic": "KafkaSQLConnector",
+    "table.whitelist": "cdc.dbo_Users_CT,dbo.Users",
+    "include.schema.changes": "true",
+    "transforms.unwrap.spec": "string",
+    "transforms.unwrap.operation.header": "false",
+
+	"value.converter.schema.registry.url": "http://localhost:8081",
+	"key.converter.schema.registry.url": "http://localhost:8081",
+	"key.converter": "io.confluent.connect.avro.AvroConverter",
+	"value.converter": "io.confluent.connect.avro.AvroConverter"
+  }
 }
