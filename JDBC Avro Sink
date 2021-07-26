@@ -6,5 +6,8 @@
 	"connection.url": "jdbc:sqlserver://192.168.0.1:1433;databaseName=Test;user=DBUser;password=Password123;",
 	"connection.user": "DBUser",
 	"connection.password": "Password123",
-	"auto.create": "true"
+	"auto.create": "true",
+	"insert.mode": "upsert",
+	"pk.mode": "record_key",
+	"pk.fields": "ID"
 }
